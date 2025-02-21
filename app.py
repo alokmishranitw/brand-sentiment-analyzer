@@ -288,7 +288,7 @@ def generate_campaign_report(analysis, brand_name, start_date="2024-01-01", end_
 
 
 def main():
-    print("App started....")
+    st.write("\nApp started....\n")
     # Set page config to ensure full width
     st.set_page_config(layout="wide")
     
@@ -384,7 +384,7 @@ def main():
         if st.button("Analyze"):
             if user_input.strip():
                 # # Perform analysis
-                print("Getting Analysis...")
+                st.write("\nGetting Analysis...\n")
                 analysis = analyzer.analyze_trends(
                     keywords=keywords,
                     timeframe='today 3-m',
@@ -395,7 +395,7 @@ def main():
                 # st.write(analysis.get('gpt_insights', 'No Answer!!!'))
                 print("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
                 campaign_report = generate_campaign_report(analysis.get('gpt_insights', 'No Answer!!!'), brand_name=user_input)
-                print("Campaign Report is : ", campaign_report)
+                # print("Campaign Report is : ", campaign_report)
                 st.write(campaign_report)
             else:
                 st.error("Please enter some text to analyze.")
