@@ -54,10 +54,10 @@ class GoogleTrendsBrandAnalyzer:
                     return interest_df
                     
             except Exception as e:
-                print(f"Error fetching trends data: {str(e)}")
+                st.write(f"Error fetching trends data: {str(e)}")
                 retry_count += 1
                 if retry_count < self.timeout_retry:
-                    print(f"Retrying in {self.sleep_time} seconds...")
+                    st.write(f"Retrying in {self.sleep_time} seconds...")
                     time.sleep(self.sleep_time)
                     
         return pd.DataFrame()  # Return empty DataFrame if all retries fail
@@ -78,7 +78,7 @@ class GoogleTrendsBrandAnalyzer:
             related_queries = self.pytrends.related_queries()
             return related_queries
         except Exception as e:
-            print(f"Error fetching related queries: {str(e)}")
+            st.write(f"Error fetching related queries: {str(e)}")
             return {}
             
     def get_regional_interest(self, keywords: List[str], timeframe: str = 'today 3-m') -> pd.DataFrame:
@@ -97,7 +97,7 @@ class GoogleTrendsBrandAnalyzer:
             regional_interest = self.pytrends.interest_by_region(resolution='COUNTRY')
             return regional_interest
         except Exception as e:
-            print(f"Error fetching regional interest: {str(e)}")
+            st.write(f"Error fetching regional interest: {str(e)}")
             return pd.DataFrame()
 
     def analyze_trends(self,
@@ -135,7 +135,7 @@ class GoogleTrendsBrandAnalyzer:
                     'volatility': interest_df.std().to_dict()
                 }
         except Exception as e:
-            print("Error in getting interest over time : ", e)
+            st.write("Error in getting interest over time : ", e)
             pass
         
         # Get related queries
@@ -149,7 +149,7 @@ class GoogleTrendsBrandAnalyzer:
             if not regional_interest.empty:
                 analysis['regional_interest'] = regional_interest.to_dict()
         except Exception as e:
-            print("Error in getting regional interest : ", e)
+            st.write("Error in getting regional interest : ", e)
             pass
             
         # GPT Analysis
@@ -191,7 +191,7 @@ class GoogleTrendsBrandAnalyzer:
             return response.choices[0].message.content
             
         except Exception as e:
-            print(f"Error in GPT analysis: {str(e)}")
+            st.write(f"Error in GPT analysis: {str(e)}")
             return "GPT analysis unavailable"
 
 # def main():
@@ -233,12 +233,12 @@ class GoogleTrendsBrandAnalyzer:
 #     #         include_gpt_analysis=True
 #     #     )
         
-#     #     # print("Analysis is : ", analysis)
+#     #     # st.write("Analysis is : ", analysis)
         
-#     #     print(f"Analysis completed and saved")
+#     #     st.write(f"Analysis completed and saved")
         
 #     # except Exception as e:
-#     #     print(f"Error in main execution: {str(e)}")
+#     #     st.write(f"Error in main execution: {str(e)}")
 
 
 import streamlit as st
@@ -283,7 +283,7 @@ def generate_campaign_report(analysis, brand_name, start_date="2024-01-01", end_
         return campaign_summary
     
     except Exception as e:
-        print("Inside Generate Campaign Report Exception : ", e)
+        st.write("Inside Generate Campaign Report Exception : ", e)
         return "Not able to generate campaign reports."
 
 
@@ -393,9 +393,9 @@ def main():
 
                 st.subheader("Campaign Summary : Action Plan")
                 # st.write(analysis.get('gpt_insights', 'No Answer!!!'))
-                print("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
+                st.write("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
                 campaign_report = generate_campaign_report(analysis.get('gpt_insights', 'No Answer!!!'), brand_name=user_input)
-                # print("Campaign Report is : ", campaign_report)
+                # st.write("Campaign Report is : ", campaign_report)
                 st.write(campaign_report)
             else:
                 st.error("Please enter some text to analyze.")
