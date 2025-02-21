@@ -391,9 +391,9 @@ def main():
 
                 st.subheader("Campaign Summary : Action Plan")
                 # st.write(analysis.get('gpt_insights', 'No Answer!!!'))
-
+                print("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
                 campaign_report = generate_campaign_report(analysis.get('gpt_insights', 'No Answer!!!'), brand_name=user_input)
-                # print("Campaign Report is : ", campaign_report)
+                print("Campaign Report is : ", campaign_report)
                 st.write(campaign_report)
             else:
                 st.error("Please enter some text to analyze.")
