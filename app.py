@@ -288,6 +288,7 @@ def generate_campaign_report(analysis, brand_name, start_date="2024-01-01", end_
 
 
 def main():
+    print("App started....")
     # Set page config to ensure full width
     st.set_page_config(layout="wide")
     
@@ -383,6 +384,7 @@ def main():
         if st.button("Analyze"):
             if user_input.strip():
                 # # Perform analysis
+                print("Getting Analysis...")
                 analysis = analyzer.analyze_trends(
                     keywords=keywords,
                     timeframe='today 3-m',
