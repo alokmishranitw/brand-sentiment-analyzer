@@ -288,9 +288,9 @@ def generate_campaign_report(analysis, brand_name, start_date="2024-01-01", end_
 
 
 def main():
-    st.write("\nApp started....\n")
     # Set page config to ensure full width
     st.set_page_config(layout="wide")
+    st.write("\nApp started....\n")
     
     # Add custom CSS to remove side margins and ensure full width
     st.markdown(
