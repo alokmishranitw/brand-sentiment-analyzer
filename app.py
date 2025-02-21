@@ -290,7 +290,7 @@ def generate_campaign_report(analysis, brand_name, start_date="2024-01-01", end_
 def main():
     # Set page config to ensure full width
     st.set_page_config(layout="wide")
-    st.write("\nApp started....\n")
+    # st.write("\nApp started....\n")
     
     # Add custom CSS to remove side margins and ensure full width
     st.markdown(
@@ -393,7 +393,7 @@ def main():
 
                 st.subheader("Campaign Summary : Action Plan")
                 # st.write(analysis.get('gpt_insights', 'No Answer!!!'))
-                st.write("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
+                # st.write("Analysis is : ", analysis.get('gpt_insights', 'No Answer!!!'))
                 campaign_report = generate_campaign_report(analysis.get('gpt_insights', 'No Answer!!!'), brand_name=user_input)
                 # st.write("Campaign Report is : ", campaign_report)
                 st.write(campaign_report)
