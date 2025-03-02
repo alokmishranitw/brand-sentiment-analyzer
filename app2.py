@@ -17,7 +17,8 @@ import json
 # import seaborn as sns
 
 # Initialize OpenAI
-from env_variables import api_key
+# from env_variables import api_key
+api_key = st.secrets["api_key"]
 model = OpenAI(api_key=api_key)
 pytrends = TrendReq(hl='en-US',  tz=360)
 
