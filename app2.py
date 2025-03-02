@@ -370,7 +370,7 @@ def main():
             "Select Time Period",
             # ["7 Days", "15 Days", "30 Days", "60 Days", "90 Days"],
 	    ["7 Days", "30 Days", "90 Days"],
-            index=4
+            index=2
         )
 
         # Region Filter
