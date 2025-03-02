@@ -127,7 +127,8 @@ def analyze_trends(query, geo = "", timeframe='today 3-m', include_gpt_analysis=
     interest_df = interest_df.explode('values')
     df_value = pd.json_normalize(interest_df["values"])[["value"]].rename(columns={"value":query})
     interest_df = pd.concat([interest_df, df_value], axis=1)[["date", query]]
-    interest_df[query] = interest_df[query].astype(int)
+    interest_df[query] = pd.to_numeric(interest_df[query], errors='coerce')
+    interest_df[query] = interest_df[query].fillna(0).astype(int)
     interest_df["date"] = pd.to_datetime(interest_df["date"])
     interest_df = interest_df.set_index(["date"])
     analysis['interest_over_time'] = interest_df.to_dict()
