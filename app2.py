@@ -96,13 +96,13 @@ def get_start_end_date(time_period):
     start_date="2024-01-01"
     end_date="2025-02-21"
     end_date = datetime.now()
-    if time_period == "7 Days":
+    if time_period == "now 7-d":
         start_date = end_date - timedelta(days=7)
-    elif time_period == "15 Days":
+    elif time_period == "now 15-d":
         start_date = end_date - timedelta(days=15)
-    elif time_period == "30 Days":
+    elif time_period == "today 1-m":
         start_date = end_date - timedelta(days=30)
-    elif time_period == "60 Days":
+    elif time_period == "today 2-m":
         start_date = end_date - timedelta(days=60)
     else: # Default is 90 Days
         start_date = end_date - timedelta(days=90)
