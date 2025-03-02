@@ -243,9 +243,9 @@ def main():
     country_codes["Global"] = ""
     date_range_mapping = {
         "7 Days": "now 7-d",
-        "15 Days": "now 15-d",
+        # "15 Days": "now 15-d",
         "30 Days": "today 1-m",
-        "60 Days": "today 2-m",
+        # "60 Days": "today 2-m",
         "90 Days": "today 3-m"
     }
     
@@ -368,7 +368,8 @@ def main():
         # Time Period Filter
         time_period = st.selectbox(
             "Select Time Period",
-            ["7 Days", "15 Days", "30 Days", "60 Days", "90 Days"],
+            # ["7 Days", "15 Days", "30 Days", "60 Days", "90 Days"],
+	    ["7 Days", "30 Days", "90 Days"],
             index=4
         )
 
