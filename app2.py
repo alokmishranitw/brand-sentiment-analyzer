@@ -116,7 +116,7 @@ def scrape_google_trends(data_type: str, key: str, query: str, geo: str = "", ti
     search = GoogleSearch(params)           # where data extraction happens on the SerpApi backend
     results = search.get_dict()         	# JSON -> Python dict
 
-    print("Result : ", results)
+    # print("Result : ", results)
     return results
 
 def analyze_trends(query, geo = "", timeframe='today 3-m', include_gpt_analysis=True):
@@ -177,7 +177,7 @@ def get_gpt_analysis(df: pd.DataFrame, keywords: List[str]) -> str:
         return response.choices[0].message.content
         
     except Exception as e:
-        print(f"Error in GPT analysis: {str(e)}")
+        st.write(f"Error in GPT analysis: {str(e)}")
         return "GPT analysis unavailable"
     
 
@@ -226,7 +226,7 @@ def generate_campaign_report(analysis, brand_name,  time_period, country_code, c
         return campaign_summary
     
     except Exception as e:
-        print("Inside Generate Campaign Report Exception : ", e)
+        st.write("Inside Generate Campaign Report Exception : ", e)
         return "Not able to generate campaign reports."
 
 
