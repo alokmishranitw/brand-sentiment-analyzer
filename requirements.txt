@@ -1,3 +1,4 @@
+google_search_results==2.4.2
 numpy==2.2.2
 openai==1.63.0
 packaging==24.2
@@ -9,4 +10,5 @@ pydantic_core==2.20.1
 pytest==8.3.4
 python-dateutil==2.9.0.post0
 pytrends==4.9.2
+serpapi==0.1.5
 streamlit==1.42.0
